@@ -1,0 +1,16 @@
+%{ for index, region in distinct(regions) ~}
+########################################
+# Resource for "${region}" region
+########################################
+module "ssm_${index}" {
+  source = "./modules/ssm"
+  name = "${name}"
+  type = "String"
+  value = "${alias}-${region}-${index}"
+  description = "${region}"
+
+  providers = {
+    aws.${alias}_${index} = aws.${alias}_${index}
+  }
+}
+%{ endfor ~}

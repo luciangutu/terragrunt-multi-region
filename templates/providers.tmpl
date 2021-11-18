@@ -1,0 +1,16 @@
+%{ if length(regions) > 0 }
+provider "aws" {
+  region = "${regions[0]}"
+}
+%{ endif ~}
+
+%{ if length(regions) > 1 }
+    %{ for index, region in distinct(regions) ~}
+
+provider "aws" {
+  alias  = "${alias}_${index}"
+  region = "${region}"
+}
+
+    %{ endfor ~}
+%{ endif ~}
