@@ -1,4 +1,4 @@
-# terragrunt-multi-region
+# Deploying infra to AWS in multiple regions using templates
 PoC of multi-region deployment on AWS with Terragrunt
 
 
